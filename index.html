@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Ahmed — University Projects</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-label">University Portfolio</div>
+          <h1 class="hero-name">Muhammad<br><span>Ahmed</span></h1>
+          <p class="hero-sub">Computer Science Student · Builder of Things</p>
+        </div>
+        <div class="hero-meta">
+          <span class="hero-location">📍 Karachi, Sindh, Pakistan</span>
+          <a
+            href="https://github.com/muhammad-ahm/UniversityProjects"
+            target="_blank"
+            class="github-btn"
+          >
+            ⌥ GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Semesters ── -->
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-title">Semesters</span>
+          <div class="section-line"></div>
+        </div>
+        <div id="semester-grid">
+          <!-- Rendered by cards.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Modal ── -->
+  <div id="modal" role="dialog" aria-modal="true">
+    <div id="modal-content">
+      <!-- Rendered by cards.js on click -->
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <p>Muhammad Ahmed &nbsp;·&nbsp; <a href="https://github.com/muhammad-ahm/UniversityProjects" target="_blank" style="color: inherit;">github.com/muhammad-ahm/UniversityProjects</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts: data first, then card logic -->
+  <script src="data.js"></script>
+  <script src="cards.js"></script>
+
+</body>
+</html>
