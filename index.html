@@ -681,11 +681,10 @@ async function loadSemesters() {
 
     const items = await r.json();
 
-    // Sort: folders first (semester-named ones), then files; sort by numeric part
+    // Folders only, sorted by numeric part in name
     const folders = items
       .filter(i => i.type === 'dir')
       .sort((a, b) => extractNumber(a.name) - extractNumber(b.name));
-    const files = items.filter(i => i.type === 'file');
 
     // Fetch sub-counts for every folder in parallel
     const contentsArr = await Promise.all(
@@ -694,26 +693,16 @@ async function loadSemesters() {
 
     loadingEl.style.display = 'none';
 
-    if (folders.length === 0 && files.length === 0) {
+    if (folders.length === 0) {
       errorEl.style.display = 'block';
-      document.getElementById('error-msg').textContent = 'The repository appears to be empty.';
-      document.getElementById('error-hint').textContent = '';
+      document.getElementById('error-msg').textContent = 'No semester folders found in this repository yet.';
+      document.getElementById('error-hint').textContent = 'Add a folder like "4thSemester" to the repo and it will appear here automatically.';
       return;
     }
 
-    // Build cards
-    let cardIndex = 0;
-
-    if (folders.length > 0) {
-      folders.forEach((folder, i) => {
-        const card = buildCard(folder, cardIndex++, contentsArr[i]);
-        grid.appendChild(card);
-      });
-    }
-
-    // Add non-folder files (README, etc.) as smaller cards
-    files.forEach(file => {
-      const card = buildCard(file, cardIndex++, { files: 0, folders: 0 });
+    // Build cards — folders only
+    folders.forEach((folder, i) => {
+      const card = buildCard(folder, i, contentsArr[i]);
       grid.appendChild(card);
     });
 
